@@ -35,8 +35,8 @@ def search_for_artist(token, artist_name):
     headers = get_auth_header(token)
     query = f"?q={artist_name}&type=artist&limit=1"
 
-    query_url = url + query
     result = get(query_url, headers=headers)
+    query_url = url + query
     json_result = json.loads(result.content)['artists']['items']
     if len(json_result) == 0:
         print('no artist with this name exists')
